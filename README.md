@@ -1,14 +1,14 @@
-🧩 CorpoGame
+🧩 Corporate Sabotage
 
-CorpoGame is a corporate-themed board game experience designed to simulate the strategic, competitive, and often unpredictable nature of modern business environments. Players navigate office politics, manage resources, and outmaneuver opponents to climb the corporate ladder.
+Corporate Sabotage is a corporate-themed board game experience designed to simulate the strategic, competitive, and often unpredictable nature of modern business environments. Players navigate office politics, manage resources, and outmaneuver opponents to climb the corporate ladder.
 
 📌 Overview
 
-CorpoGame blends classic board game mechanics with a corporate twist. From securing promotions to surviving layoffs, every decision impacts your path to the top.
+Corporate Sabotage blends classic board game mechanics with a corporate twist. From securing promotions to surviving layoffs, every decision impacts your path to the top.
 
 Whether you're negotiating deals, completing projects, or sabotaging rivals, the goal is simple:
 
-Become the CEO before anyone else.
+Dominate the market and thwart your enemies.
 
 🎮 Features
 
@@ -33,6 +33,10 @@ Every move matters—choose wisely.
 
 Frontend: HTML, CSS, JavaScript
 
+Packages: npm
+
 Design: Figma
 
 Version Control: Git & GitHub
+
+Dev Server: Vite
