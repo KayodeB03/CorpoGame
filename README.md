@@ -33,7 +33,9 @@ Every move matters—choose wisely.
 
 Frontend: HTML, CSS, JavaScript
 
-Packages: npm
+Code Linting: ESLint
+
+Packages/Dependencies: npm, Node.js
 
 Design: Figma
 
