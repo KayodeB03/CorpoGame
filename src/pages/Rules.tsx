@@ -1,44 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rules | Corporate Sabotage</title>
-  <link rel="stylesheet" href="src/styles.css" />
-</head>
-<body>
+import RuleSection from '../components/RuleSection'
 
-  <header class="topbar">
-    <div class="logo">
-      <div class="sheet-icon"></div>
-      <a href="index.html">
-        <span>Corporate Sabotage</span>
-      </a>
-    </div>
-
-    <nav class="menu">
-      <a href="index.html">Home</a>
-      <a href="#">Rules</a>
-      <a href="#">Game Modes</a>
-    </nav>
-
-    <button class="buy-btn">Purchase</button>
-  </header>
-
-  <main class="sheet">
-
-    <section class="section timer-section">
+export default function Rules() {
+  return (
+    <section className="section timer-section">
       <h1>Corporate Sabotage Rules</h1>
       <p>Players: 3–4</p>
       <p>In Corporate Sabotage, you race opposing corporations to claim four economic sectors: Political, Healthcare, Energy, and Technology. Invest workers, play audits, and use Hostile Takeovers to gain control. The first player to control all four sectors wins.</p>
 
-      <article class="rule-section">
-        <h2>Introduction and Setup</h2>
+      <RuleSection title="Introduction and Setup">
         <p>Each player draws three worker cards and places them revealed in front of them. Everyone rolls two d6 dice; the highest roll goes first. Play passes to the left.</p>
-      </article>
+      </RuleSection>
 
-      <article class="rule-section">
-        <h2>Your Turn</h2>
+      <RuleSection title="Your Turn">
         <p>Turns play out in the following order:</p>
         <ol>
           <li>Start phase (Audit cards may be played).</li>
@@ -48,10 +21,9 @@
           <li>Invest (if able; otherwise end the turn).</li>
           <li>End turn.</li>
         </ol>
-      </article>
+      </RuleSection>
 
-      <article class="rule-section">
-        <h2>Spaces</h2>
+      <RuleSection title="Spaces">
         <dl>
           <dt>Start</dt>
           <dd>Start here. Every time you pass Start, draw 1 new worker. You may only invest workers on the turn you pass or land on Start.</dd>
@@ -77,10 +49,9 @@
           <dt>Sent to the IRS</dt>
           <dd>You get sent to the IRS space. The IRS space does not trigger.</dd>
         </dl>
-      </article>
+      </RuleSection>
 
-      <article class="rule-section">
-        <h2>Worker Cards</h2>
+      <RuleSection title="Worker Cards">
         <p>Workers come in three tiers:</p>
         <ul>
           <li>Entry-Level: 1 worker point</li>
@@ -89,44 +60,32 @@
         </ul>
         <p>Workers must be visible to other players, revealed in front of you, and distinguished between invested and non-invested by turning invested worker cards horizontally. You play with your workers revealed at all times.</p>
         <p>When the workers deck runs out, shuffle the discard pile to create a new draw pile. Discarded workers go face up in a discard pile next to the draw pile.</p>
-      </article>
+      </RuleSection>
 
-      <article class="rule-section">
-        <h2>Investing and Sectors</h2>
+      <RuleSection title="Investing and Sectors">
         <p>Whenever you pass or land on Start, you may choose to invest. To invest, you must have at least 4 Worker Points available, and you must still have at least 4 Worker Points remaining after the investment.</p>
         <p><strong>Example:</strong> If you have workers worth 2wp, 2wp, and 1wp, you may invest the 1wp worker.</p>
-        <p>To invest, turn the invested workers horizontally and place a worker chip in your chosen sector matching the worker’s value (1, 2, or 4). You may choose any sector when investing.</p>
-        <p>To control a sector, you must have at least 5 Worker Points invested there and more Worker Points than any other player. If players tie for highest invested Worker Points in a sector, no one gains that sector’s benefits until the tie is broken.</p>
-      </article>
+        <p>To invest, turn the invested workers horizontally and place a worker chip in your chosen sector matching the worker's value (1, 2, or 4). You may choose any sector when investing.</p>
+        <p>To control a sector, you must have at least 5 Worker Points invested there and more Worker Points than any other player. If players tie for highest invested Worker Points in a sector, no one gains that sector's benefits until the tie is broken.</p>
+      </RuleSection>
 
-      <article class="rule-section">
-        <h2>Audit Cards</h2>
+      <RuleSection title="Audit Cards">
         <p>Audit cards slow other players by affecting workers, investments, and turns. Discard audit cards after use. Shuffle the discard pile when there are no more audit cards to draw.</p>
         <ul>
           <li><strong>Report to IRS (6):</strong> Send target player to the IRS space; consumes their roll. No spaces passed are triggered.</li>
           <li><strong>Poach Workers (6):</strong> Take one invested entry-level or middle-management worker from another player and swap it to your side, investing it in the same sector.</li>
           <li><strong>Blackmail (6):</strong> Select a card from each opponent. They cannot invest that worker in any sector when they pass Start. This effect wears off for each affected worker after the opponent passes Start.</li>
-          <li><strong>Union Strikes (6):</strong> Freeze a player’s sector. For 2 turns, the chosen sector will not trigger.</li>
+          <li><strong>Union Strikes (6):</strong> Freeze a player's sector. For 2 turns, the chosen sector will not trigger.</li>
           <li><strong>Hesitation (4):</strong> Target an opponent and uninvest an entry-level worker (1 WP) from the chosen sector.</li>
           <li><strong>Moles (4):</strong> Target player receives a mole and cannot invest their workers on their next turn if they pass Start. Moles do not stack and must expire before another Mole card is applied. If a Mole card cannot be used, keep it but do not apply it.</li>
           <li><strong>Angel Investor (1):</strong> Draw 4 new workers.</li>
           <li><strong>Corporate Scandal (1):</strong> Choose one player; they uninvest up to 4 worker points invested in a sector.</li>
         </ul>
-      </article>
+      </RuleSection>
 
-      <article class="rule-section">
-        <h2>Winning the Game</h2>
+      <RuleSection title="Winning the Game">
         <p>To win, control all four sectors by having the highest total invested worker points in each sector.</p>
-      </article>
-
+      </RuleSection>
     </section>
-
-  </main>
-
-  <footer>
-    <p>© 2026 Corporate Sabotage Co. All rights reserved.</p>
-  </footer>
-
-  <script src="timer.js"></script>
-</body>
-</html>
+  )
+}
