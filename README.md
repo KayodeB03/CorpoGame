@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+🧩 Corporate Sabotage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Corporate Sabotage is a corporate-themed board game experience designed to simulate the strategic, competitive, and often unpredictable nature of modern business environments. Players navigate office politics, manage resources, and outmaneuver opponents to climb the corporate ladder.
 
-Currently, two official plugins are available:
+📌 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Corporate Sabotage blends classic board game mechanics with a corporate twist. From securing promotions to surviving layoffs, every decision impacts your path to the top.
 
-## React Compiler
+Whether you're negotiating deals, completing projects, or sabotaging rivals, the goal is simple:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Dominate the market and thwart your enemies.
 
-## Expanding the ESLint configuration
+🎮 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🏢 Corporate Progression System
+Start as an intern and work your way up through promotions.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+📊 Resource Management
+Manage time, energy, and influence to stay ahead.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🤝 Strategic Interactions
+Form alliances—or betray them when it benefits you.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+🎲 Dynamic Events
+Encounter random corporate events like layoffs, bonuses, and audits.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🧠 Decision-Based Gameplay
+Every move matters—choose wisely.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+🛠️ Tech Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+(Adjust this section based on your actual build)
+
+Frontend: HTML, CSS, JavaScript
+
+Code Linting: ESLint
+
+Packages/Dependencies: npm, Node.js
+
+Design: Figma
+
+Version Control: Git & GitHub
+
+Dev Server: Vite
