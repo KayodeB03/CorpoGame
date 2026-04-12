@@ -1,91 +1,173 @@
-import RuleSection from '../components/RuleSection'
+import { useState } from 'react'
+import RulesSidebar from '../components/RulesSidebar'
+import '../styles/rules.css'
+
+interface RuleSection {
+  title: string
+  content: string[]
+}
+
+const rulesSections: Record<string, RuleSection> = {
+  'Rules': {
+    title: 'Rules',
+    content: [
+      '— Introduction and Setup —',
+      'In Corporate Sabotage, you are in a race against opposing corporations all trying to corner the market through taking control of various sectors of the economy: Political, Healthcare, Energy, and Technology. The first to claim the three sectors wins the game. You claim sectors via investing your workers into different sectors.',
+      'To start the game each player draws three worker cards and plays with them face up. Everyone rolls the two d6 dice, the highest roll goes first.',
+      '',
+      '— Your Turn —',
+      'Turns play out as follows:',
+      '1. Start phase (Audit cards may be played here)',
+      '2. Roll for movement',
+      '3. Resolve Spaces and Triggers',
+      '4. Pre-Investment (Audit cards may be played here)',
+      '5. Invest (If able to, if not. End the turn)',
+      '6. End turn',
+      '',
+      '— Worker Cards —',
+      'Workers come in three tiers:',
+      '• Entry Level (1 worker point)',
+      '• Middle Management (2 worker points)',
+      '• Executive (4 worker points) Executives have special abilities if they are not invested.',
+      'Workers must remain visible to all players at all times. Place all workers face up, and clearly distinguish invested workers from non-invested ones by turning invested workers horizontally.',
+      'Helpful info:',
+      'When the workers deck runs out, shuffle the discard pile to create a new draw pile. When you discard a worker, it goes face up in a discard pile next to the draw pile.',
+      '',
+      '— Spaces —',
+      'Start: Start here. Every time you pass Start, draw 1 new worker. You may only invest workers on the turn you pass or land on start.',
+      'Audit: Draw an Audit card.',
+      'Layoffs: Discard one non-invested employee that you control.',
+      'IRS: Roll the two or three d6 dice, rolling a 9 or above results in firing a worker. If you roll an 8 or lower, nothing happens.',
+      'Career Fair: Draw two workers, put one worker at the bottom of the worker pile.',
+      'Public Relations: Gain a PR Token when landing on this space. (A PR Token may be used to negate one negative effect that would cause you to lose worker(s), except effects caused by Hostile Takeover). Players can\'t have more than 2 PR Tokens.',
+      'Hostile Takeover: When you land on Hostile Takeover, choose a worker that another player has invested. You and that player each roll a d6, rerolling in the case of a tie until there is a winner. If the targeted player loses the roll, they lose control of that worker, and you gain control of it in its current sector (PR tokens do not negate this effect).',
+      'Sent to the IRS: You get sent to the IRS space. The IRS space roll does trigger.',
+      '',
+      '— Investing and Sectors —',
+      'After passing Start, you must invest if able:',
+      '• If you have 4 or more Worker Points (invested or uninvested), you must invest at least 1 worker if you are able to.',
+      '• If you have 10 or more Worker Points (invested or uninvested), you must invest at least 3 workers if you are able to.',
+      '• You must still have at least 4 Worker Points remaining after investing.',
+      'Example: You have 2, 2, and 1 WP (5 total). After passing Start, you must invest at least 1 worker. If you invest 2 WP, you\'ll have 3 WP remaining, which is allowed.',
+      '',
+      '— Audit Cards —',
+      'Audit cards are your method to slowing other players\' progress. You can mess with other players\' workers through audits, poaching, and moles. Discard audit cards after into the discard pile. Shuffle the discard pile after there are no longer audit cards to draw.',
+      '(4x) Hesitant Investment: Uninvest target entry level (wp1) or middle management (wp2) worker for a target player.',
+      '(4x) Hush Money: Select an uninvested worker from one target player. It can\'t be invested in the next time they invest.',
+      '(4x) IRS: Play before a player rolls for their turn. That player loses their turn and is sent directly to the IRS space. They must roll for the IRS space.',
+      '(4x) Mole: Target player can\'t use worker abilities or audit cards for 5 turns.',
+      '(4x) Recruitment outreach: Take control of an invested entry level (wp1) or middle management (wp2) worker from a sector and invest the worker in another sector.',
+      '(4x) Strike a deal: Choose an uninvested entry level (wp1) or middle management (wp2) and gain that worker, targeted player draws an audit card.',
+      '(4x) Union Strike: Target player does not benefit from one of their sectors abilities for 5 turns.',
+      '(2x) Crisis Management: Gain a Public Relations token (You may only have a maximum of two PR tokens).',
+      '(2x) Hiring Event: Draw a worker',
+      '(1x) Job Fair: If you have invested at least two times this game you may play this audit card; Draw four workers.',
+      '(1x) Corporate Scandal: Target player uninvested a total of four worker points of your choosing from one or more sectors.',
+      '',
+      '— Winning the Game —',
+      'To win the game, you must control at least three sectors by having the highest total invested worker points above five in those three sectors.',
+    ],
+  },
+  'Introduction and Setup': {
+    title: 'Introduction and Setup',
+    content: [
+      'In Corporate Sabotage, you are in a race against opposing corporations all trying to corner the market through taking control of various sectors of the economy: Political, Healthcare, Energy, and Technology. The first to claim the three sectors wins the game. You claim sectors via investing your workers into different sectors.',
+      'To start the game each player draws three worker cards and plays with them face up. Everyone rolls the two d6 dice, the highest roll goes first.',
+    ],
+  },
+  'Your Turn': {
+    title: 'Your Turn',
+    content: [
+      'Turns play out as follows:',
+      '1. Start phase (Audit cards may be played here)',
+      '2. Roll for movement',
+      '3. Resolve Spaces and Triggers',
+      '4. Pre-Investment (Audit cards may be played here)',
+      '5. Invest (If able to, if not. End the turn)',
+      '6. End turn',
+    ],
+  },
+  'Worker Cards': {
+    title: 'Worker Cards',
+    content: [
+      'Workers come in three tiers:',
+      '• Entry Level (1 worker point)',
+      '• Middle Management (2 worker points)',
+      '• Executive (4 worker points) Executives have special abilities if they are not invested.',
+      'Workers must remain visible to all players at all times. Place all workers face up, and clearly distinguish invested workers from non-invested ones by turning invested workers horizontally.',
+      'Helpful info:',
+      'When the workers deck runs out, shuffle the discard pile to create a new draw pile. When you discard a worker, it goes face up in a discard pile next to the draw pile.',
+    ],
+  },
+  'Spaces': {
+    title: 'Spaces',
+    content: [
+      'Start: Start here. Every time you pass Start, draw 1 new worker. You may only invest workers on the turn you pass or land on start.',
+      'Audit: Draw an Audit card.',
+      'Layoffs: Discard one non-invested employee that you control.',
+      'IRS: Roll the two or three d6 dice, rolling a 9 or above results in firing a worker. If you roll an 8 or lower, nothing happens.',
+      'Career Fair: Draw two workers, put one worker at the bottom of the worker pile.',
+      'Public Relations: Gain a PR Token when landing on this space. (A PR Token may be used to negate one negative effect that would cause you to lose worker(s), except effects caused by Hostile Takeover). Players can\'t have more than 2 PR Tokens.',
+      'Hostile Takeover: When you land on Hostile Takeover, choose a worker that another player has invested. You and that player each roll a d6, rerolling in the case of a tie until there is a winner. If the targeted player loses the roll, they lose control of that worker, and you gain control of it in its current sector (PR tokens do not negate this effect).',
+      'Sent to the IRS: You get sent to the IRS space. The IRS space roll does trigger.',
+    ],
+  },
+  'Investing and Sectors': {
+    title: 'Investing and Sectors',
+    content: [
+      'After passing Start, you must invest if able:',
+      '• If you have 4 or more Worker Points (invested or uninvested), you must invest at least 1 worker if you are able to.',
+      '• If you have 10 or more Worker Points (invested or uninvested), you must invest at least 3 workers if you are able to.',
+      '• You must still have at least 4 Worker Points remaining after investing.',
+      'Example: You have 2, 2, and 1 WP (5 total). After passing Start, you must invest at least 1 worker. If you invest 2 WP, you\'ll have 3 WP remaining, which is allowed.',
+    ],
+  },
+  'Audit Cards': {
+    title: 'Audit Cards',
+    content: [
+      'Audit cards are your method to slowing other players\' progress. You can mess with other players\' workers through audits, poaching, and moles. Discard audit cards after into the discard pile. Shuffle the discard pile after there are no longer audit cards to draw.',
+      '(4x) Hesitant Investment: Uninvest target entry level (wp1) or middle management (wp2) worker for a target player.',
+      '(4x) Hush Money: Select an uninvested worker from one target player. It can\'t be invested in the next time they invest.',
+      '(4x) IRS: Play before a player rolls for their turn. That player loses their turn and is sent directly to the IRS space. They must roll for the IRS space.',
+      '(4x) Mole: Target player can\'t use worker abilities or audit cards for 5 turns.',
+      '(4x) Recruitment outreach: Take control of an invested entry level (wp1) or middle management (wp2) worker from a sector and invest the worker in another sector.',
+      '(4x) Strike a deal: Choose an uninvested entry level (wp1) or middle management (wp2) and gain that worker, targeted player draws an audit card.',
+      '(4x) Union Strike: Target player does not benefit from one of their sectors abilities for 5 turns.',
+      '(2x) Crisis Management: Gain a Public Relations token (You may only have a maximum of two PR tokens).',
+      '(2x) Hiring Event: Draw a worker',
+      '(1x) Job Fair: If you have invested at least two times this game you may play this audit card; Draw four workers.',
+      '(1x) Corporate Scandal: Target player uninvested a total of four worker points of your choosing from one or more sectors.',
+    ],
+  },
+  'Winning the Game': {
+    title: 'Winning the Game',
+    content: [
+      'To win the game, you must control at least three sectors by having the highest total invested worker points above five in those three sectors.',
+    ],
+  },
+}
 
 export default function Rules() {
+  const [activeSection, setActiveSection] = useState('Rules')
+  const currentSection = rulesSections[activeSection]
+
   return (
-    <section className="section timer-section">
-      <h1>Corporate Sabotage Rules</h1>
-      <p>Players: 3–4</p>
-      <p>In Corporate Sabotage, you race opposing corporations to claim four economic sectors: Political, Healthcare, Energy, and Technology. Invest workers, play audits, and use Hostile Takeovers to gain control. The first player to control all four sectors wins.</p>
+    <div className="rules-container">
+      <RulesSidebar onSelectSection={setActiveSection} activeSection={activeSection} />
 
-      <RuleSection title="Introduction and Setup">
-        <p>Each player draws three worker cards and places them revealed in front of them. Everyone rolls two d6 dice; the highest roll goes first. Play passes to the left.</p>
-      </RuleSection>
-
-      <RuleSection title="Your Turn">
-        <p>Turns play out in the following order:</p>
-        <ol>
-          <li>Start phase (Audit cards may be played).</li>
-          <li>Roll for movement.</li>
-          <li>Resolve spaces and triggers.</li>
-          <li>Pre-Investment (Audit cards may be played).</li>
-          <li>Invest (if able; otherwise end the turn).</li>
-          <li>End turn.</li>
-        </ol>
-      </RuleSection>
-
-      <RuleSection title="Spaces">
-        <dl>
-          <dt>Start</dt>
-          <dd>Start here. Every time you pass Start, draw 1 new worker. You may only invest workers on the turn you pass or land on Start.</dd>
-
-          <dt>Audit</dt>
-          <dd>Draw an Audit card.</dd>
-
-          <dt>Layoffs</dt>
-          <dd>Discard one non-invested employee that you control.</dd>
-
-          <dt>IRS</dt>
-          <dd>Roll two or three d6 dice. Rolling a 9 or above fires a worker. If you roll 8 or lower, nothing happens.</dd>
-
-          <dt>Career Fair</dt>
-          <dd>Draw two workers, discard one. Create a separate face-up pile of discarded or fired workers.</dd>
-
-          <dt>Public Relations</dt>
-          <dd>Gain a PR Token when landing on this space. A PR Token may negate one negative effect that would cause you to lose worker(s), except effects caused by Hostile Takeover. Players cannot have more than 2 PR Tokens.</dd>
-
-          <dt>Hostile Takeover</dt>
-          <dd>Choose a worker that another player has invested. You and that player each roll a d6, rerolling ties until there is a winner. If the targeted player loses, they lose control of that worker and you gain control in the same sector. PR Tokens do not negate this effect.</dd>
-
-          <dt>Sent to the IRS</dt>
-          <dd>You get sent to the IRS space. The IRS space does not trigger.</dd>
-        </dl>
-      </RuleSection>
-
-      <RuleSection title="Worker Cards">
-        <p>Workers come in three tiers:</p>
-        <ul>
-          <li>Entry-Level: 1 worker point</li>
-          <li>Middle Management: 2 worker points</li>
-          <li>Executive Suite: 4 worker points (Executives have special abilities if they are not invested.)</li>
-        </ul>
-        <p>Workers must be visible to other players, revealed in front of you, and distinguished between invested and non-invested by turning invested worker cards horizontally. You play with your workers revealed at all times.</p>
-        <p>When the workers deck runs out, shuffle the discard pile to create a new draw pile. Discarded workers go face up in a discard pile next to the draw pile.</p>
-      </RuleSection>
-
-      <RuleSection title="Investing and Sectors">
-        <p>Whenever you pass or land on Start, you may choose to invest. To invest, you must have at least 4 Worker Points available, and you must still have at least 4 Worker Points remaining after the investment.</p>
-        <p><strong>Example:</strong> If you have workers worth 2wp, 2wp, and 1wp, you may invest the 1wp worker.</p>
-        <p>To invest, turn the invested workers horizontally and place a worker chip in your chosen sector matching the worker's value (1, 2, or 4). You may choose any sector when investing.</p>
-        <p>To control a sector, you must have at least 5 Worker Points invested there and more Worker Points than any other player. If players tie for highest invested Worker Points in a sector, no one gains that sector's benefits until the tie is broken.</p>
-      </RuleSection>
-
-      <RuleSection title="Audit Cards">
-        <p>Audit cards slow other players by affecting workers, investments, and turns. Discard audit cards after use. Shuffle the discard pile when there are no more audit cards to draw.</p>
-        <ul>
-          <li><strong>Report to IRS (6):</strong> Send target player to the IRS space; consumes their roll. No spaces passed are triggered.</li>
-          <li><strong>Poach Workers (6):</strong> Take one invested entry-level or middle-management worker from another player and swap it to your side, investing it in the same sector.</li>
-          <li><strong>Blackmail (6):</strong> Select a card from each opponent. They cannot invest that worker in any sector when they pass Start. This effect wears off for each affected worker after the opponent passes Start.</li>
-          <li><strong>Union Strikes (6):</strong> Freeze a player's sector. For 2 turns, the chosen sector will not trigger.</li>
-          <li><strong>Hesitation (4):</strong> Target an opponent and uninvest an entry-level worker (1 WP) from the chosen sector.</li>
-          <li><strong>Moles (4):</strong> Target player receives a mole and cannot invest their workers on their next turn if they pass Start. Moles do not stack and must expire before another Mole card is applied. If a Mole card cannot be used, keep it but do not apply it.</li>
-          <li><strong>Angel Investor (1):</strong> Draw 4 new workers.</li>
-          <li><strong>Corporate Scandal (1):</strong> Choose one player; they uninvest up to 4 worker points invested in a sector.</li>
-        </ul>
-      </RuleSection>
-
-      <RuleSection title="Winning the Game">
-        <p>To win, control all four sectors by having the highest total invested worker points in each sector.</p>
-      </RuleSection>
-    </section>
+      <main className="rules-content">
+        <section className="rules-section fade-in" key={activeSection}>
+          {activeSection !== 'Rules' && <h2>{currentSection.title}</h2>}
+          <div className="rules-text">
+            {currentSection.content.map((paragraph, index) => {
+              if (paragraph.startsWith('— ') && paragraph.endsWith(' —')) {
+                return <h3 key={index}>{paragraph.slice(2, -2)}</h3>
+              }
+              return <p key={index}>{paragraph}</p>
+            })}
+          </div>
+        </section>
+      </main>
+    </div>
   )
 }

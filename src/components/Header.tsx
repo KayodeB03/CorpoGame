@@ -4,7 +4,6 @@ export default function Header() {
   return (
     <header className="topbar">
       <div className="logo">
-        <div className="sheet-icon"></div>
         <Link to="/">
           <span>Corporate Sabotage</span>
         </Link>

@@ -1,8 +1,7 @@
 // pages/Home.tsx
-import { useNavigate } from 'react-router-dom'
+import { FiArrowRight } from 'react-icons/fi'
 
 export default function Home() {
-  const navigate = useNavigate()
 
   const whatIsTheGame = [
     {
@@ -54,15 +53,9 @@ export default function Home() {
           <p>Build influence. Control Sectors. Eliminate competitors.</p>
 
           <div className="hero-buttons">
-            <button className="primary">Buy the Game</button>
-            <button className="secondary" onClick={() => navigate('/rules')}>
-              Learn the Rules
-            </button>
-            <button className="secondary" onClick={() => navigate('/components')}>
-              Quick Play
-            </button>
-            <button className="secondary" onClick={() => navigate('/components')}>
-              View Components
+            <button className="primary">
+              Buy the Game
+              <FiArrowRight />
             </button>
           </div>
         </div>
@@ -72,50 +65,54 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <h3>What is the Game?</h3>
+      <div className="content-wrapper">
+        <section className="section">
+          <h3>What is the Game?</h3>
 
-        <div className="card-grid">
-          {whatIsTheGame.map((item) => (
-            <div key={item.title} className="card">
-              <h4>{item.title}</h4>
-              <p>{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+          <div className="card-grid">
+            {whatIsTheGame.map((item) => (
+              <div key={item.title} className="card">
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <section className="section">
-        <h3>How To Play</h3>
+        <section className="section">
+          <h3>How To Play</h3>
 
-        <div className="steps">
-          {steps.map((step) => (
-            <div key={step} className="step">
-              {step}
-            </div>
-          ))}
-        </div>
-      </section>
+          <div className="steps">
+            {steps.map((step) => (
+              <div key={step} className="step">
+                {step}
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <section className="section">
-        <h3>Game Features</h3>
+        <section className="section">
+          <h3>Game Features</h3>
 
-        <div className="features">
-          {features.map((feature) => (
-            <div key={feature.title}>
-              <strong>{feature.title}</strong>
-              <p>{feature.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+          <div className="features">
+            {features.map((feature) => (
+              <div key={feature.title}>
+                <strong>{feature.title}</strong>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
 
-      <section className="cta">
-        <h3>Get the Game for $49.99</h3>
-        <p>Includes board, player tokens, and strategy cards.</p>
-        <br />
-        <button className="primary">Purchase Now</button>
-      </section>
+      <div className="cta-wrapper">
+        <section className="cta">
+          <h3>Get the Game for $49.99</h3>
+          <p>Includes board, player tokens, and strategy cards.</p>
+          <br />
+          <button className="primary">Purchase Now</button>
+        </section>
+      </div>
     </>
   )
 }
