@@ -65,6 +65,139 @@ body {
   background: #1557b0;
 }
 
+/* Breadcrumbs */
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f5f7fa;
+  padding: 12px 24px;
+  border-bottom: 1px solid #dadce0;
+  font-size: 13px;
+  color: #5f6368;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-link {
+  color: #1a73e8;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+  color: #1557b0;
+  text-decoration: underline;
+}
+
+.breadcrumb-text {
+  color: #5f6368;
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  color: #dadce0;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+/* Hamburger Menu Button */
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 6px;
+  padding: 8px;
+}
+
+.hamburger-btn span {
+  width: 24px;
+  height: 3px;
+  background: #202124;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Menu Overlay */
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1a73e8;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+  opacity: 0.8;
+}
+
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.mobile-menu-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 16px;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.mobile-menu-link:hover {
+  opacity: 0.8;
+}
+
+.mobile-menu-purchase {
+  background: white;
+  color: #1a73e8;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.mobile-menu-purchase:hover {
+  opacity: 0.9;
+}
+
 .flip-card-container {
   width: 240px;
   height: 294px;
@@ -380,8 +513,11 @@ footer {
   }
 
   .buy-btn {
-    padding: 8px 14px;
-    font-size: 14px;
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
   }
 
   .hero {

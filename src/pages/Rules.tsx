@@ -1,10 +1,29 @@
 import { useState } from 'react'
+import {
+  FiBriefcase,
+  FiRotateCcw,
+  FiUsers,
+  FiGrid,
+  FiTrendingUp,
+  FiShield,
+  FiAward,
+} from 'react-icons/fi'
 import RulesSidebar from '../components/RulesSidebar'
 import '../styles/rules.css'
 
 interface RuleSection {
   title: string
   content: string[]
+}
+
+const sectionIcons: Record<string, React.ReactNode> = {
+  'Introduction and Setup': <FiBriefcase size={20} />,
+  'Your Turn': <FiRotateCcw size={20} />,
+  'Worker Cards': <FiUsers size={20} />,
+  'Spaces': <FiGrid size={20} />,
+  'Investing and Sectors': <FiTrendingUp size={20} />,
+  'Audit Cards': <FiShield size={20} />,
+  'Winning the Game': <FiAward size={20} />,
 }
 
 const rulesSections: Record<string, RuleSection> = {
@@ -30,7 +49,6 @@ const rulesSections: Record<string, RuleSection> = {
       '• Middle Management (2 worker points)',
       '• Executive (4 worker points) Executives have special abilities if they are not invested.',
       'Workers must remain visible to all players at all times. Place all workers face up, and clearly distinguish invested workers from non-invested ones by turning invested workers horizontally.',
-      'Helpful info:',
       'When the workers deck runs out, shuffle the discard pile to create a new draw pile. When you discard a worker, it goes face up in a discard pile next to the draw pile.',
       '',
       '— Spaces —',
@@ -95,7 +113,6 @@ const rulesSections: Record<string, RuleSection> = {
       '• Middle Management (2 worker points)',
       '• Executive (4 worker points) Executives have special abilities if they are not invested.',
       'Workers must remain visible to all players at all times. Place all workers face up, and clearly distinguish invested workers from non-invested ones by turning invested workers horizontally.',
-      'Helpful info:',
       'When the workers deck runs out, shuffle the discard pile to create a new draw pile. When you discard a worker, it goes face up in a discard pile next to the draw pile.',
     ],
   },
@@ -151,19 +168,48 @@ export default function Rules() {
   const [activeSection, setActiveSection] = useState('Rules')
   const currentSection = rulesSections[activeSection]
 
+  const stylizeText = (text: string) => {
+    // Replace specific terms with styled versions
+    const styledText = text
+      .replace(/\b(WP|Worker Points?|worker points?)\b/g, '<strong>$1</strong>')
+      .replace(/\b(Political|Healthcare|Energy|Technology)\b/g, '<strong>$1</strong>')
+      .replace(/\b(Entry Level|Middle Management|Executive)\b/g, '<strong>$1</strong>')
+      .replace(/\b(PR Token|PR Tokens?)\b/g, '<strong>$1</strong>')
+      .replace(/\b(Audit cards?|Audit Cards?)\b/g, '<strong>$1</strong>')
+      .replace(/\b(uninvest|invest|invested|investing)\b/g, '<em>$1</em>')
+
+    return <span dangerouslySetInnerHTML={{ __html: styledText }} />
+  }
+
   return (
     <div className="rules-container">
       <RulesSidebar onSelectSection={setActiveSection} activeSection={activeSection} />
 
       <main className="rules-content">
         <section className="rules-section fade-in" key={activeSection}>
-          {activeSection !== 'Rules' && <h2>{currentSection.title}</h2>}
+          {activeSection !== 'Rules' && (
+            <h2 style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px' }}>
+              {sectionIcons[activeSection] && (
+                <span style={{ color: '#1a73e8', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                  {sectionIcons[activeSection]}
+                </span>
+              )}
+              {currentSection.title}
+            </h2>
+          )}
           <div className="rules-text">
             {currentSection.content.map((paragraph, index) => {
               if (paragraph.startsWith('— ') && paragraph.endsWith(' —')) {
-                return <h3 key={index}>{paragraph.slice(2, -2)}</h3>
+                const sectionName = paragraph.slice(2, -2)
+                const icon = sectionIcons[sectionName]
+                return (
+                  <h3 key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '10px' }}>
+                    {icon && <span style={{ color: '#1a73e8', display: 'flex', alignItems: 'center', flexShrink: 0 }}>{icon}</span>}
+                    {sectionName}
+                  </h3>
+                )
               }
-              return <p key={index}>{paragraph}</p>
+              return <p key={index}>{stylizeText(paragraph)}</p>
             })}
           </div>
         </section>

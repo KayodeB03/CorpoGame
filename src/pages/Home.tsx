@@ -1,7 +1,9 @@
 // pages/Home.tsx
+import { useNavigate } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
 
 export default function Home() {
+  const navigate = useNavigate()
 
   const whatIsTheGame = [
     {
@@ -53,7 +55,7 @@ export default function Home() {
           <p>Build influence. Control Sectors. Eliminate competitors.</p>
 
           <div className="hero-buttons">
-            <button className="primary">
+            <button className="primary" onClick={() => navigate('/purchase')}>
               Buy the Game
               <FiArrowRight />
             </button>
@@ -110,7 +112,9 @@ export default function Home() {
           <h3>Get the Game for $49.99</h3>
           <p>Includes board, player tokens, and strategy cards.</p>
           <br />
-          <button className="primary">Purchase Now</button>
+          <button className="primary" onClick={() => navigate('/purchase')}>
+            Purchase Now
+          </button>
         </section>
       </div>
     </>
