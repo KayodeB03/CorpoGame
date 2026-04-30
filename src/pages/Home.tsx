@@ -1,6 +1,7 @@
 // pages/Home.tsx
 import { useNavigate } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
+import ImageWithFallback from '../components/ImageWithFallback'
 import gameBoardSvg from '../assets/coporate_sabotage_game_board.svg'
 
 export default function Home() {
@@ -64,7 +65,7 @@ export default function Home() {
         </div>
 
         <div className="hero-right">
-          <img src={gameBoardSvg} alt="Corporate Sabotage Game Board" className="board-preview" />
+          <ImageWithFallback src={gameBoardSvg} alt="Corporate Sabotage Game Board" className="board-preview" />
         </div>
       </section>
 
