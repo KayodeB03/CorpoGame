@@ -5,6 +5,21 @@
   min-height: 100vh;
 }
 
+/* Disclaimer */
+.product-disclaimer {
+  background: #fff3cd;
+  border-bottom: 1px solid #ffc107;
+  padding: 16px max(50px, calc((100vw - 1400px) / 2));
+}
+
+.product-disclaimer p {
+  max-width: 1400px;
+  margin: 0 auto;
+  color: #856404;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 /* Hero Section */
 .product-hero {
   background: white;

@@ -1,6 +1,7 @@
 // pages/Home.tsx
 import { useNavigate } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
+import ImageWithFallback from '../components/ImageWithFallback'
 import gameBoardSvg from '../assets/coporate_sabotage_game_board.svg'
 
 export default function Home() {
@@ -64,7 +65,7 @@ export default function Home() {
         </div>
 
         <div className="hero-right">
-          <img src={gameBoardSvg} alt="Corporate Sabotage Game Board" className="board-preview" />
+          <ImageWithFallback src={gameBoardSvg} alt="Corporate Sabotage Game Board" className="board-preview" />
         </div>
       </section>
 
@@ -110,7 +111,7 @@ export default function Home() {
 
       <div className="cta-wrapper">
         <section className="cta">
-          <h3>Get the Game for $49.99</h3>
+          <h3>Get the Game for $19.99</h3>
           <p>Includes board, player tokens, and strategy cards.</p>
           <br />
           <button className="primary" onClick={() => navigate('/purchase')}>

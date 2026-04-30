@@ -28,7 +28,6 @@ export default function ProductPage() {
   const navigate = useNavigate()
   const { selectedEdition, setSelectedEdition, quantity, setQuantity } = usePurchase()
 
-  const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [copyLinkMessage, setCopyLinkMessage] = useState(false)
 
   const editions: Edition[] = [
@@ -46,13 +45,6 @@ export default function ProductPage() {
       description: 'Premium components with custom dice and storage',
       features: ['Deluxe Board', 'Premium Cards', 'Custom Dice', 'Player Tokens', 'Storage Box', 'Extended Rules'],
     },
-  ]
-
-  const productImages = [
-    { id: 1, label: 'Front View' },
-    { id: 2, label: 'Box Detail' },
-    { id: 3, label: 'Components' },
-    { id: 4, label: 'Gameplay' },
   ]
 
   const reviews = [
@@ -93,11 +85,16 @@ export default function ProductPage() {
 
   return (
     <div className="product-page">
+      {/* Disclaimer */}
+      <div className="product-disclaimer">
+        <p><strong>NOTE:</strong> This is a MOCKED Product Page and Checkout. Ordering is currently unavailable.</p>
+      </div>
+
       {/* Hero Section */}
       <div className="product-hero">
         <div className="product-hero-container">
           <div className="product-hero-text">
-            <h1 className="product-hero-title">CorpoGame: The Board Game</h1>
+            <h1 className="product-hero-title">Corporate Sabotage: A Game of Business Espionage</h1>
             <p className="product-hero-subtitle">
               Strategic workplace simulation board game for 2-4 players. Navigate corporate challenges,
               manage resources, and compete for victory.
@@ -135,41 +132,18 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {/* Image Gallery */}
-      <div className="product-gallery">
-        <div className="product-gallery-container">
-          <h2 className="product-gallery-title">Product Gallery</h2>
-          <div className="product-hero-image">
-            <div className="product-hero-image-placeholder">
-              Product Image: {productImages[activeImageIndex].label}
-            </div>
-          </div>
-          <div className="product-thumbnails">
-            {productImages.map((img, idx) => (
-              <div
-                key={img.id}
-                className={`product-thumbnail ${activeImageIndex === idx ? 'active' : ''}`}
-                onClick={() => setActiveImageIndex(idx)}
-              >
-                <span>{img.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Description Section */}
       <div className="product-section">
         <div className="product-section-container">
           <h2 className="product-section-title">About the Game</h2>
           <p className="product-description-text">
-            CorpoGame is a strategic board game that simulates the dynamic world of corporate management.
+            Corporate Sabotage is a strategic board game that simulates the dynamic world of corporate management.
             Players take on roles within a fictional company and must navigate challenges, manage Worker Points,
             strategically invest in audit cards, and compete for market dominance. The game combines elements of
             resource management, strategic planning, and negotiation.
           </p>
           <p className="product-description-text">
-            Perfect for game nights with friends or family, CorpoGame offers replayability through randomized
+            Perfect for game nights with friends or family, Corporate Sabotage offers replayability through randomized
             card draws and multiple winning strategies. Each game typically takes 45-60 minutes and supports 2-4
             players of ages 14 and up.
           </p>
@@ -183,13 +157,12 @@ export default function ProductPage() {
           <table className="product-table">
             <tbody>
               {[
-                { label: 'Dimensions', value: '12" x 10" x 2"' },
+                { label: 'Dimensions', value: '18.5" x 9.5" x 3"' },
                 { label: 'Weight', value: '2.5 lbs' },
-                { label: 'Player Count', value: '2-4' },
-                { label: 'Suggested Age', value: '14+' },
-                { label: 'Game Time', value: '45-60 minutes' },
+                { label: 'Player Count', value: '3-4' },
+                { label: 'Suggested Age', value: '12+' },
+                { label: 'Game Time', value: '20-35 minutes' },
                 { label: 'Components', value: 'Board, Cards, Tokens, Dice, Rulebook' },
-                { label: 'Material', value: 'Cardboard, Wood, Paper' },
               ].map((row, idx) => (
                 <tr key={idx}>
                   <td>{row.label}</td>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import FlipCard from '../components/FlipCard'
+import ImageWithFallback from '../components/ImageWithFallback'
 
 // Import Worker Card SVGs
 import worker1 from '../assets/workercards/worker_1.svg'
@@ -139,7 +140,7 @@ export default function ComponentsPage() {
               backImage={selectedComponent.backPath}
             />
           ) : (
-            <img
+            <ImageWithFallback
               src={selectedComponent.imagePath}
               alt={selectedName}
               className="component-preview no-flip"

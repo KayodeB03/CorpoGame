@@ -1,7 +1,9 @@
 .skeleton-wrapper {
   position: relative;
   overflow: hidden;
-  display: inline-block;
+  display: block;
+  width: 100%;
+  height: 100%;
   /* Maintain the border radius or other outer styles if passed via className,
      we should allow the wrapper to inherit sizing/shaping */
 }
