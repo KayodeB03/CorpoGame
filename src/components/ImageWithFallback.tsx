@@ -1,4 +1,4 @@
-import { useState, ImgHTMLAttributes } from 'react'
+import { useState, type ImgHTMLAttributes } from 'react'
 import '../styles/skeleton.css'
 
 interface ImageWithFallbackProps extends ImgHTMLAttributes<HTMLImageElement> {
