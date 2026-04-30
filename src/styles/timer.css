@@ -80,6 +80,9 @@
 
 .timer-button {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: clamp(12px, 4vw, 16px);
   font-size: clamp(14px, 3vw, 16px);
   font-weight: 600;
