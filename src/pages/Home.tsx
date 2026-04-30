@@ -1,6 +1,7 @@
 // pages/Home.tsx
 import { useNavigate } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
+import gameBoardSvg from '../assets/coporate_sabotage_game_board.svg'
 
 export default function Home() {
   const navigate = useNavigate()
@@ -63,7 +64,7 @@ export default function Home() {
         </div>
 
         <div className="hero-right">
-          <div className="board-placeholder">Board Preview</div>
+          <img src={gameBoardSvg} alt="Corporate Sabotage Game Board" className="board-preview" />
         </div>
       </section>
 

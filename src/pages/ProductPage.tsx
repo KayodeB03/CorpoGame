@@ -35,14 +35,14 @@ export default function ProductPage() {
     {
       id: 'standard',
       name: 'Standard Edition',
-      price: 49.99,
+      price: 19.99,
       description: 'Complete game with board, cards, and rulebook',
       features: ['Game Board', 'Card Decks', 'Player Tokens', 'Rulebook', 'Quick Start Guide'],
     },
     {
       id: 'deluxe',
       name: 'Deluxe Edition',
-      price: 79.99,
+      price: 29.99,
       description: 'Premium components with custom dice and storage',
       features: ['Deluxe Board', 'Premium Cards', 'Custom Dice', 'Player Tokens', 'Storage Box', 'Extended Rules'],
     },

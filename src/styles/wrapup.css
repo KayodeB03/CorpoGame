@@ -1,0 +1,117 @@
+/* Wrap-Up Timer Styling */
+
+.wrapup-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(32, 33, 36, 0.92);
+  backdrop-filter: blur(4px);
+  border-top: 3px solid #d32f2f;
+  padding: 20px;
+  animation: wrapupSlideUp 300ms ease-out;
+  z-index: 1500;
+}
+
+.wrapup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.wrapup-text {
+  font-size: clamp(14px, 3vw, 16px);
+  font-weight: 600;
+  color: #d32f2f;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.wrapup-timer {
+  font-size: clamp(48px, 15vw, 80px);
+  font-weight: 700;
+  color: #d32f2f;
+  font-variant-numeric: tabular-nums;
+  animation: wrapupPulse 1s ease-in-out infinite;
+}
+
+.wrapup-button {
+  width: 100%;
+  padding: clamp(12px, 3vw, 16px);
+  background: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: clamp(14px, 3vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 200ms ease;
+  min-height: 48px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.wrapup-button:active {
+  transform: scale(0.98);
+  background: #b71c1c;
+}
+
+.wrapup-button:hover {
+  background: #c41c00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+}
+
+/* Animations */
+@keyframes wrapupSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wrapupPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .wrapup-container {
+    padding: 24px;
+  }
+
+  .wrapup-button {
+    max-width: 300px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .wrapup-container {
+    padding: 32px;
+  }
+
+  .wrapup-button {
+    max-width: 400px;
+  }
+}

@@ -1,0 +1,173 @@
+/* Timer Component Styling */
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 60vh;
+  padding: 20px;
+}
+
+.timer-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.timer-player-name {
+  font-size: clamp(24px, 6vw, 40px);
+  font-weight: 700;
+  color: #202124;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.timer-next-player {
+  font-size: clamp(14px, 4vw, 18px);
+  color: #5f6368;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Timer Display */
+.timer-display-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 60px;
+  flex-grow: 1;
+}
+
+.timer-display {
+  position: relative;
+  width: clamp(200px, 70vw, 400px);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-number {
+  font-size: clamp(56px, 17.5vw, 126px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: text-shadow 0.3s ease;
+}
+
+.timer-display.critical .timer-number {
+  animation: timerPulse 0.5s ease-in-out infinite;
+  text-shadow: 0 0 20px currentColor;
+}
+
+.timer-progress-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+/* Timer Controls */
+.timer-controls {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.timer-button {
+  flex: 1;
+  padding: clamp(12px, 4vw, 16px);
+  font-size: clamp(14px, 3vw, 16px);
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  min-height: 48px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timer-button.primary {
+  background: #1a73e8;
+  color: white;
+}
+
+.timer-button.primary:hover {
+  background: #1557b0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+}
+
+.timer-button.secondary {
+  background: white;
+  color: #d32f2f;
+  border: 2px solid #d32f2f;
+}
+
+.timer-button.secondary:hover {
+  background: #ffebee;
+  transform: translateY(-2px);
+}
+
+.timer-button.pause {
+  background: #f9ab00;
+  color: white;
+}
+
+.timer-button.pause:hover {
+  background: #f8970f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(249, 171, 0, 0.3);
+}
+
+/* Animations */
+@keyframes timerPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Tablet/Desktop */
+@media (min-width: 768px) {
+  .timer-container {
+    min-height: 70vh;
+  }
+
+  .timer-header {
+    margin-bottom: 60px;
+  }
+
+  .timer-display-wrapper {
+    margin-bottom: 80px;
+  }
+
+  .timer-button {
+    padding: 16px 32px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .timer-container {
+    min-height: 80vh;
+  }
+
+  .timer-player-name {
+    font-size: 48px;
+  }
+
+  .timer-next-player {
+    font-size: 20px;
+  }
+}

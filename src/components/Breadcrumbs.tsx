@@ -4,7 +4,6 @@ import { FiChevronRight } from 'react-icons/fi'
 export default function Breadcrumbs() {
   const location = useLocation()
   
-  // Only show breadcrumbs on purchase-related routes
   const isPurchaseRoute = location.pathname === '/' || 
     location.pathname === '/purchase' || 
     location.pathname === '/purchase/checkout'

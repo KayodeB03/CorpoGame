@@ -1,0 +1,135 @@
+/* Turn Transition Overlay */
+
+.turn-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: transitionFadeIn 100ms ease-out, transitionFadeOut 200ms ease-out 800ms forwards;
+}
+
+.turn-transition-content {
+  text-align: center;
+  animation: transitionSlideUp 300ms cubic-bezier(0.34, 1.56, 0.64, 1) 100ms both;
+}
+
+.turn-transition-text {
+  font-size: clamp(28px, 8vw, 48px);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.turn-transition-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.turn-transition-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: #1a73e8;
+  border-radius: 50%;
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  animation: transitionScale 300ms cubic-bezier(0.34, 1.56, 0.64, 1) 200ms both;
+}
+
+.turn-transition-name {
+  font-size: clamp(24px, 6vw, 40px);
+  font-weight: 700;
+  color: white;
+  animation: transitionSlideInRight 300ms cubic-bezier(0.34, 1.56, 0.64, 1) 250ms both;
+}
+
+/* Animations */
+@keyframes transitionFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes transitionFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes transitionSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes transitionScale {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes transitionSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .turn-transition-number {
+    width: 100px;
+    height: 100px;
+    font-size: 56px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .turn-transition-text {
+    font-size: 56px;
+    margin-bottom: 32px;
+  }
+
+  .turn-transition-number {
+    width: 120px;
+    height: 120px;
+    font-size: 72px;
+  }
+
+  .turn-transition-name {
+    font-size: 48px;
+  }
+}
