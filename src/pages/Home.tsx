@@ -111,7 +111,7 @@ export default function Home() {
 
       <div className="cta-wrapper">
         <section className="cta">
-          <h3>Get the Game for $49.99</h3>
+          <h3>Get the Game for $19.99</h3>
           <p>Includes board, player tokens, and strategy cards.</p>
           <br />
           <button className="primary" onClick={() => navigate('/purchase')}>
