@@ -99,7 +99,7 @@ export default function QuickPlay() {
         <div className="quickplay-setup-container">
           <h1>Quick Play Mode Setup</h1>
           <p className="setup-subtitle">
-            Get ready for fast-paced decision making. Each player gets 60 seconds!
+            Get ready for fast-paced decision making. Each player gets 30 seconds!
           </p>
 
           {/* Number of Players */}
@@ -148,7 +148,7 @@ export default function QuickPlay() {
           <div className="setup-info">
             <h3>How to Play</h3>
             <ul>
-              <li>Each player gets 60 seconds per turn</li>
+              <li>Each player gets 30 seconds per turn</li>
               <li>After time's up, 5 seconds to wrap up</li>
               <li>Can skip at any time during their turn</li>
               <li>Next player takes the turn</li>
