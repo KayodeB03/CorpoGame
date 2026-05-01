@@ -366,12 +366,6 @@ body {
   background: white;
   color: #5f6368;
   border-radius: 20px;
-  transition: transform 280ms ease, box-shadow 280ms ease;
-}
-
-.board-placeholder:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 48px rgba(26, 115, 232, 0.18);
 }
 
 .board-preview {
