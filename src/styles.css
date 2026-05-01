@@ -278,6 +278,7 @@ body {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   padding: 80px max(50px, calc((100vw - 1400px) / 2));
+  gap: 60px;
   background-image:
     linear-gradient(to right, #e0e0e0 1px, transparent 1px),
     linear-gradient(to bottom, #e0e0e0 1px, transparent 1px),
@@ -375,12 +376,6 @@ body {
   border-radius: 20px;
   object-fit: contain;
   padding: 10px;
-  transition: transform 280ms ease, box-shadow 280ms ease;
-}
-
-.board-preview:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 48px rgba(26, 115, 232, 0.18);
 }
 
 /* Category Buttons */
@@ -867,13 +862,13 @@ footer {
   }
 
   .category-button {
-    width: 50px;
-    height: 50px;
+    width: 63px;
+    height: 63px;
   }
 
   .category-button.active {
-    width: 65px;
-    height: 65px;
+    width: 81px;
+    height: 81px;
     border-width: 3px;
   }
 

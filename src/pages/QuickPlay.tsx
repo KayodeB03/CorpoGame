@@ -42,21 +42,17 @@ export default function QuickPlay() {
   const players: Player[] = playerNames.map((name, idx) => ({ id: idx, name }))
   const gameState = useGameState({ players })
 
-  // Track if this is first turn
-  const isFirstTurn = gameState.turnNumber === 1
-
   // Ref to track the last turn number we auto-started for
   const lastAutoStartTurnRef = useRef(-1)
 
-  // Auto-start timer for non-first player turns
+  // Auto-start timer for all turns, including the first turn
   useEffect(() => {
-    // Only auto-start if we're in game phase, not first turn, and this is a new turn
-    if (phase === 'game' && !isFirstTurn && gameState.turnNumber !== lastAutoStartTurnRef.current) {
+    // Only auto-start if we're in game phase and this is a new turn
+    if (phase === 'game' && gameState.turnNumber !== lastAutoStartTurnRef.current) {
       lastAutoStartTurnRef.current = gameState.turnNumber
-      // Auto-start timer for subsequent players
       restartMain()
     }
-  }, [phase, isFirstTurn, gameState.turnNumber, restartMain])
+  }, [phase, gameState.turnNumber, restartMain])
 
   // Handle turn state transitions
   useEffect(() => {
@@ -182,7 +178,6 @@ export default function QuickPlay() {
               skipMain()
               setPhase('wrapup')
             }}
-            isFirstTurn={isFirstTurn}
           />
         )}
 

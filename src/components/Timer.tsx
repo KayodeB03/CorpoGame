@@ -10,7 +10,6 @@ interface TimerProps {
   onPause: () => void
   onSkip: () => void
   nextPlayerName?: string
-  isFirstTurn?: boolean
 }
 
 export default function Timer({
@@ -22,7 +21,6 @@ export default function Timer({
   onPause,
   onSkip,
   nextPlayerName,
-  isFirstTurn = false,
 }: TimerProps) {
   const { color, isCritical } = useColorGradient(time, totalTime)
   const minutes = Math.floor(time / 60)
@@ -62,31 +60,19 @@ export default function Timer({
       </div>
 
       <div className="timer-controls">
-        {isFirstTurn ? (
-          <>
-            {!isRunning && (
-              <button className="timer-button primary" onClick={onStart}>
-                Start Turn
-              </button>
-            )}
-            {isRunning && (
-              <button className="timer-button secondary" onClick={onSkip}>
-                Skip Turn
-              </button>
-            )}
-          </>
+        {isRunning ? (
+          <button className="timer-button pause" onClick={onPause}>
+            Pause Game
+          </button>
         ) : (
           <>
-            {isRunning ? (
-              <button className="timer-button pause" onClick={onPause}>
-                Pause Game
-              </button>
-            ) : (
-              <button className="timer-button primary" onClick={onStart}>
-                Resume
-              </button>
-            )}
-            <button className="timer-button secondary" onClick={onSkip}>
+            <button className="timer-button primary" onClick={onStart}>
+              Resume
+            </button>
+            <button 
+              className="timer-button secondary" 
+              onClick={onSkip}
+            >
               Skip Turn
             </button>
           </>
