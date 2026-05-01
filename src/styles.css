@@ -18,6 +18,7 @@ body {
   justify-content: space-between;
   padding: 16px 24px;
   background: white;
+  position: relative;
 }
 
 .topbar a {
@@ -30,6 +31,7 @@ body {
   align-items: center;
   gap: 10px;
   font-weight: 600;
+  z-index: 1;
 }
 
 .logo span {
@@ -42,6 +44,9 @@ body {
   gap: 18px;
   font-size: 16px;
   color: #5f6368;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .menu a {
@@ -59,6 +64,7 @@ body {
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .buy-btn:hover {
