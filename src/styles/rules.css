@@ -4,9 +4,10 @@
   display: flex;
   gap: 60px;
   position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding: 80px max(50px, calc((100vw - 1400px) / 2));
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 50px;
   background: #f5f6f8;
 }
 
@@ -74,7 +75,6 @@
 .rules-content {
   flex: 1;
   max-width: 900px;
-  padding-right: 40px;
 }
 
 .rules-section {
